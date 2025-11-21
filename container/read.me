@@ -10,3 +10,15 @@ docker run -it --rm \
   --device=/dev/bus/usb:/dev/bus/usb \
   --name isaac_ros_fp \
   isaac_ros_foundationpose_jazzy bash
+
+
+
+
+# 1) Run the full NVIDIA setup (once)
+./foundationpose_setup.sh
+
+# 2) For later sessions, just drop into the Isaac ROS env
+isaac-ros   # this calls our shim, exports ISAAC_ROS_WS, sources ROS + workspace
+
+# 3) Start the D435 + FoundationPose example
+./run_foundationpose_realsense.sh
