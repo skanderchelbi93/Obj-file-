@@ -1,0 +1,12 @@
+# Build image
+docker build -t isaac_ros_foundationpose_jazzy .
+
+# Run container with GPU + USB + host networking (for ROS 2 DDS)
+docker run -it --rm \
+  --gpus all \
+  --network host \
+  --env DISPLAY \
+  -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+  --device=/dev/bus/usb:/dev/bus/usb \
+  --name isaac_ros_fp \
+  isaac_ros_foundationpose_jazzy bash
